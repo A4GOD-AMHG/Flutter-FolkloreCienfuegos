@@ -1,0 +1,19 @@
+flutter_launcher_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/images/icon_app.png"
+  min_sdk_android: 21
+  adaptive_icon_background: "#ffffff"
+  adaptive_icon_foreground: "assets/images/icon_app.png"
+  adaptive_icon_foreground_inset: 20
+
+  remove_alpha_channel_ios: true
+
+  web:
+    generate: true
+
+  windows:
+    generate: true
+
+  macos:
+    generate: true
