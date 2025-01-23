@@ -1,11 +1,10 @@
 import 'dart:io';
+import 'package:cienfuegos_folklore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
-import 'package:cienfuegos_folklore/home_screen.dart';
 
 void main() {
-  runApp(MyApp());
   WidgetsFlutterBinding.ensureInitialized();
 
   if (Platform.isWindows || Platform.isLinux) {

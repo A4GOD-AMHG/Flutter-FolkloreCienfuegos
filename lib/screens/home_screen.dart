@@ -1,8 +1,8 @@
 import 'dart:convert';
+import 'package:cienfuegos_folklore/screens/legend_detail_screen.dart';
 import 'package:cienfuegos_folklore/widgets/info_modal.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'legend_detail_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  collapsedHeight: 200,
+                  collapsedHeight: 180,
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
@@ -52,19 +52,17 @@ class _HomeScreenState extends State<HomeScreen> {
                     background: Image(
                       image: AssetImage('assets/images/main_header.png'),
                       width: MediaQuery.of(context).size.width,
-                      height: 200,
+                      height: 180,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
                 SliverPadding(
-                  padding: const EdgeInsets.all(16.0),
+                  padding: const EdgeInsets.all(10.0),
                   sliver: SliverGrid.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 220,
+                      mainAxisExtent: 180,
                       crossAxisCount: 3,
-                      mainAxisSpacing: 15,
-                      crossAxisSpacing: 15,
                       childAspectRatio: 0.8,
                     ),
                     itemCount: legends.length,
@@ -100,12 +98,13 @@ class _HomeScreenState extends State<HomeScreen> {
                             Expanded(
                               flex: 3,
                               child: Padding(
-                                padding: const EdgeInsets.only(top: 4),
+                                padding: const EdgeInsets.only(
+                                    top: 4, left: 10, right: 10),
                                 child: Text(
                                   legend['title'],
                                   textAlign: TextAlign.center,
                                   style: const TextStyle(
-                                    fontSize: 16,
+                                    fontSize: 14,
                                     fontWeight: FontWeight.bold,
                                     color: Colors.black,
                                   ),

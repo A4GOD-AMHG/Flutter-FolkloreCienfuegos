@@ -59,7 +59,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  collapsedHeight: 200,
+                  collapsedHeight: 180,
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   automaticallyImplyLeading: false,
@@ -70,7 +70,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                     background: Image(
                       image: AssetImage('assets/images/legend_header.png'),
                       width: MediaQuery.of(context).size.width,
-                      height: 200,
+                      height: 180,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -80,25 +80,34 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Column(
                       children: [
+                        SizedBox(
+                          height: 10,
+                        ),
                         Align(
                           alignment: Alignment.center,
-                          child: Text(
-                            widget.legendTitle,
-                            style: const TextStyle(
-                              fontSize: 24,
-                              fontWeight: FontWeight.bold,
-                              color: Colors.black,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            child: Text(
+                              widget.legendTitle,
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                              textAlign: TextAlign.center,
                             ),
-                            textAlign: TextAlign.center,
                           ),
                         ),
                         const SizedBox(height: 30),
-                        Text(
-                          widget.legendContent,
-                          style: const TextStyle(
-                            fontSize: 16,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Text(
+                            widget.legendContent,
+                            style: const TextStyle(
+                              fontSize: 16,
+                            ),
+                            textAlign: TextAlign.justify,
                           ),
-                          textAlign: TextAlign.justify,
                         ),
                         const SizedBox(height: 50),
                       ],

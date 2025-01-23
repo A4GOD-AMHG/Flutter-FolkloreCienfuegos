@@ -67,11 +67,11 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Padding(
-                      padding: EdgeInsets.only(left: 10),
+                      padding: EdgeInsets.only(left: 15),
                       child: Text(
                         'Leyendas de Cienfuegos',
                         style: TextStyle(
-                          fontSize: 20,
+                          fontSize: 14,
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
                         ),
@@ -89,7 +89,7 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 Text(
                   'Empresa:',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 13,
                     color: Colors.black,
                   ),
                 ),
@@ -97,7 +97,7 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 Text(
                   'Mipyme ALABBI S.U.R.L.',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 13,
                     color: Colors.black,
                   ),
                 ),
@@ -105,7 +105,7 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 Text(
                   'Diseñado por:',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 13,
                     color: Colors.black,
                   ),
                 ),
@@ -113,7 +113,7 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 Text(
                   'Félix Ernesto Estrada Varela',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 13,
                     color: Colors.black,
                   ),
                 ),
@@ -121,7 +121,7 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 Text(
                   'Desarrollado por:',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 13,
                     color: Colors.black,
                   ),
                 ),
@@ -129,7 +129,7 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 Text(
                   'Alexis Manuel Hurtado García',
                   style: TextStyle(
-                    fontSize: 18,
+                    fontSize: 13,
                     color: Colors.black,
                   ),
                 ),
