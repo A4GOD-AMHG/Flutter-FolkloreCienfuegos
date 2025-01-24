@@ -87,11 +87,17 @@ class _HomeScreenState extends State<HomeScreen> {
                           children: [
                             Expanded(
                               flex: 7,
-                              child: Hero(
-                                tag: legend['icon'],
-                                child: Image.asset(
-                                  legend['icon'],
-                                  fit: BoxFit.contain,
+                              child: Padding(
+                                padding: const EdgeInsets.only(
+                                  left: 5,
+                                  right: 5,
+                                ),
+                                child: Hero(
+                                  tag: legend['icon'],
+                                  child: Image.asset(
+                                    legend['icon'],
+                                    fit: BoxFit.contain,
+                                  ),
                                 ),
                               ),
                             ),
