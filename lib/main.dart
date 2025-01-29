@@ -1,17 +1,23 @@
+import 'dart:async';
 import 'dart:io';
 import 'package:cienfuegos_folklore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 
 void main() {
-  WidgetsFlutterBinding.ensureInitialized();
+  var widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   if (Platform.isWindows || Platform.isLinux) {
     setWindowSize(400, 800);
   }
 
-  runApp(MyApp());
+  Timer(Duration(seconds: 3), () {
+    FlutterNativeSplash.remove();
+    runApp(MyApp());
+  });
 }
 
 void setWindowSize(double width, double height) {

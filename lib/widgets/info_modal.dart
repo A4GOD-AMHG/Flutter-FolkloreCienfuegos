@@ -63,31 +63,10 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: 15),
-                      child: Text(
-                        'Leyendas de Cienfuegos',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    IconButton(
-                      icon: Icon(Icons.close, color: Colors.black),
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
+                Image.asset('../../assets/images/identity.png'),
                 SizedBox(height: 10),
                 Text(
-                  'Empresa:',
+                  'Diseño:',
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.black,
@@ -95,7 +74,23 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Mipyme ALABBI S.U.R.L.',
+                  'D.I. Félix E. Estrada Varela',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'Desarrollo:',
+                  style: TextStyle(
+                    fontSize: 13,
+                    color: Colors.black,
+                  ),
+                ),
+                SizedBox(height: 5),
+                Text(
+                  'Ing. Alexis M. Hurtado García',
                   style: TextStyle(
                     fontSize: 13,
                     color: Colors.black,
@@ -103,37 +98,12 @@ class _CustomAnimatedDialogState extends State<_CustomAnimatedDialog>
                 ),
                 SizedBox(height: 10),
                 Text(
-                  'Diseñado por:',
+                  '2025',
                   style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black,
-                  ),
+                      fontSize: 18,
+                      color: Colors.black,
+                      fontWeight: FontWeight.bold),
                 ),
-                SizedBox(height: 10),
-                Text(
-                  'Félix Ernesto Estrada Varela',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Desarrollado por:',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: 10),
-                Text(
-                  'Alexis Manuel Hurtado García',
-                  style: TextStyle(
-                    fontSize: 13,
-                    color: Colors.black,
-                  ),
-                ),
-                SizedBox(height: 10),
               ],
             ),
           ),

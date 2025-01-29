@@ -41,7 +41,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
 
     setState(() {
       _navigationTopDistance = position.dy + size.height + 10;
-      _legendIconTopDistance = position.dy + size.height - 100;
+      _legendIconTopDistance = position.dy + size.height - 90;
     });
   }
 
@@ -119,13 +119,13 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
           ),
           Positioned(
             top: _legendIconTopDistance,
-            right: 30,
+            right: 20,
             child: Hero(
               tag: widget.icon,
               child: Image(
                 image: AssetImage(widget.icon),
-                height: 100,
-                width: 90,
+                height: 90,
+                width: 80,
                 fit: BoxFit.fill,
               ),
             ),
@@ -147,7 +147,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                     child: Icon(
                       Icons.question_mark,
                       color: Colors.black,
-                      size: 28,
+                      size: 24,
                     ),
                   ),
                 ),
@@ -171,7 +171,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                     child: Icon(
                       Icons.arrow_back,
                       color: Colors.black,
-                      size: 28,
+                      size: 24,
                     ),
                   ),
                 ),

@@ -43,7 +43,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  collapsedHeight: 180,
+                  collapsedHeight: 150,
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
@@ -52,16 +52,16 @@ class _HomeScreenState extends State<HomeScreen> {
                     background: Image(
                       image: AssetImage('assets/images/main_header.png'),
                       width: MediaQuery.of(context).size.width,
-                      height: 180,
+                      height: 150,
                       fit: BoxFit.fill,
                     ),
                   ),
                 ),
                 SliverPadding(
-                  padding: const EdgeInsets.all(10.0),
+                  padding: const EdgeInsets.all(8.0),
                   sliver: SliverGrid.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 180,
+                      mainAxisExtent: 150,
                       crossAxisCount: 3,
                       childAspectRatio: 0.8,
                     ),
@@ -105,7 +105,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               flex: 3,
                               child: Padding(
                                 padding: const EdgeInsets.only(
-                                    top: 4, left: 10, right: 10),
+                                  top: 3,
+                                  left: 10,
+                                  right: 10,
+                                  bottom: 3,
+                                ),
                                 child: Text(
                                   legend['title'],
                                   textAlign: TextAlign.center,
@@ -145,7 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: Icon(
                       Icons.question_mark,
                       color: Colors.black,
-                      size: 28,
+                      size: 24,
                     ),
                   ),
                 ),
