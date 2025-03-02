@@ -2,6 +2,24 @@
 
 **Cienfuegos Folklore** is a mobile application developed by **Alexis Manuel Hurtado Garcia** for Alabbi S.U.R.L., which collects and presents the popular legends and tales from the city of Cienfuegos, Cuba. The app allows users to read and listen to the legends with an interactive and accessible user experience.
 
+
+## Tech Stack
+
+<div align="center">
+  <table>
+    <tr>
+      <td align="center">
+        <img src="https://raw.githubusercontent.com/A4GOD-AMHG/Utils-for-repos/refs/heads/main/icons/dart/dart-original.svg" width="100" alt="dart"/><br>
+        <b>Dart</b>
+      </td>
+      <td align="center">
+        <img src="https://raw.githubusercontent.com/A4GOD-AMHG/Utils-for-repos/refs/heads/main/icons/flutter/flutter-original.svg" width="100" alt="flutter"/><br>
+        <b>Flutter</b>
+      </td>
+    </tr>
+  </table>
+</div>
+
 ## Features
 
 - **Animated Splash Screen**: A splash screen with a short video and animations at the beginning of the app.
@@ -17,10 +35,26 @@
 - `flutter_launcher_icons`: To configure and generate custom icons for the app.
 - `audioplayers`: For audio playback, allowing users to listen to the narrated legends.
 
-## Installation
+## How to use
 
-1. Clone this repository:
+   Clone this repository:
    ```bash
-   git clone https://github.com/Alastor-4/Flutter-FolkloreCienfuegos.git
+   git clone https://github.com/A4GOD-AMHG/Flutter-FolkloreCienfuegos.git
+
    flutter pub get
+   
    flutter run
+   ```
+
+   Build the project
+   ```
+   flutter build apk --split-per-abi
+   ```
+
+## Screenshots
+
+<div align="center" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin: 30px 0;">
+  <img src="./screenshots/apk1.png" alt="Mobile" style="width: 250px; margin: 10px;"/>
+  <img src="./screenshots/apk2.png" alt="iPad" style="width: 250px; margin: 10px;"/>
+  <img src="./screenshots/apk3.png" alt="Desktop" style="width: 250px; margin: 10px; max-width: 100%;"/>
+</div>

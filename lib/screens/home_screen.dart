@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'package:cienfuegos_folklore/screens/legend_detail_screen.dart';
 import 'package:cienfuegos_folklore/widgets/info_modal.dart';
@@ -31,6 +32,11 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+    final height = MediaQuery.of(context).size.height;
+
+    final collapsedHeight = width < 380 ? 120.0 : 140.0;
+    final rowsHeight = height < 600 ? 120.0 : 145.0;
     return Scaffold(
       backgroundColor: Color(0xFFF3EBD7),
       body: Stack(
@@ -43,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  collapsedHeight: 150,
+                  collapsedHeight: collapsedHeight,
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   elevation: 0,
@@ -52,7 +58,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     background: Image(
                       image: AssetImage('assets/images/main_header.png'),
                       width: MediaQuery.of(context).size.width,
-                      height: 150,
+                      height: collapsedHeight,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -61,9 +67,9 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(8.0),
                   sliver: SliverGrid.builder(
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      mainAxisExtent: 150,
-                      crossAxisCount: 3,
-                      childAspectRatio: 0.8,
+                      mainAxisExtent: rowsHeight,
+                      crossAxisCount: 4,
+                      childAspectRatio: 1,
                     ),
                     itemCount: legends.length,
                     itemBuilder: (context, index) {
@@ -85,41 +91,16 @@ class _HomeScreenState extends State<HomeScreen> {
                         },
                         child: Column(
                           children: [
-                            Expanded(
-                              flex: 7,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  left: 5,
-                                  right: 5,
-                                ),
-                                child: Hero(
-                                  tag: legend['icon'],
-                                  child: Image.asset(
-                                    legend['icon'],
-                                    fit: BoxFit.contain,
-                                  ),
-                                ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                left: 5,
+                                right: 5,
                               ),
-                            ),
-                            Expanded(
-                              flex: 3,
-                              child: Padding(
-                                padding: const EdgeInsets.only(
-                                  top: 3,
-                                  left: 10,
-                                  right: 10,
-                                  bottom: 3,
-                                ),
-                                child: Text(
-                                  legend['title'],
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.black,
-                                  ),
-                                  maxLines: 2,
-                                  overflow: TextOverflow.ellipsis,
+                              child: Hero(
+                                tag: legend['icon'],
+                                child: Image.asset(
+                                  legend['icon2'],
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ),
@@ -133,7 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
           ),
           Positioned(
-            top: 30,
+            top: 25,
             right: 10,
             child: Material(
               color: Colors.transparent,
@@ -145,11 +126,11 @@ class _HomeScreenState extends State<HomeScreen> {
                   borderRadius: BorderRadius.circular(8),
                   onTap: () => showCustomModal(context),
                   child: Padding(
-                    padding: const EdgeInsets.all(6.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Icon(
                       Icons.question_mark,
                       color: Colors.black,
-                      size: 24,
+                      size: 22,
                     ),
                   ),
                 ),

@@ -10,10 +10,6 @@ void main() {
   var widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
-  if (Platform.isWindows || Platform.isLinux) {
-    setWindowSize(400, 800);
-  }
-
   Timer(Duration(seconds: 3), () {
     FlutterNativeSplash.remove();
     runApp(MyApp());

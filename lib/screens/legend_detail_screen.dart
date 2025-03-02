@@ -40,13 +40,21 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
     final size = renderBox.size;
 
     setState(() {
+      final width = MediaQuery.of(context).size.width;
+
       _navigationTopDistance = position.dy + size.height + 10;
-      _legendIconTopDistance = position.dy + size.height - 90;
+      _legendIconTopDistance =
+          position.dy + size.height - (width < 380 ? 60 : 70);
     });
   }
 
   @override
   Widget build(BuildContext context) {
+    final width = MediaQuery.of(context).size.width;
+
+    final collapsedHeight = width < 380 ? 120.0 : 140.0;
+    final imageHeight = width < 380 ? 70.0 : 85.0;
+    final imageWidth = width < 380 ? 60.0 : 75.0;
     return Scaffold(
       backgroundColor: const Color(0xFFF3EBD7),
       body: Stack(
@@ -59,7 +67,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
             child: CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  collapsedHeight: 180,
+                  collapsedHeight: collapsedHeight,
                   pinned: true,
                   backgroundColor: Colors.transparent,
                   automaticallyImplyLeading: false,
@@ -70,7 +78,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                     background: Image(
                       image: AssetImage('assets/images/legend_header.png'),
                       width: MediaQuery.of(context).size.width,
-                      height: 180,
+                      height: collapsedHeight,
                       fit: BoxFit.fill,
                     ),
                   ),
@@ -86,7 +94,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                         Align(
                           alignment: Alignment.center,
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 15),
+                            padding: const EdgeInsets.symmetric(horizontal: 45),
                             child: Text(
                               widget.legendTitle,
                               style: const TextStyle(
@@ -102,11 +110,11 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                         Padding(
                           padding: const EdgeInsets.symmetric(horizontal: 10),
                           child: Text(
-                            widget.legendContent,
+                            "  ${widget.legendContent}",
                             style: const TextStyle(
                               fontSize: 16,
                             ),
-                            textAlign: TextAlign.justify,
+                            textAlign: TextAlign.center,
                           ),
                         ),
                         const SizedBox(height: 50),
@@ -119,19 +127,19 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
           ),
           Positioned(
             top: _legendIconTopDistance,
-            right: 20,
+            right: 15,
             child: Hero(
               tag: widget.icon,
               child: Image(
                 image: AssetImage(widget.icon),
-                height: 90,
-                width: 80,
+                height: imageHeight,
+                width: imageWidth,
                 fit: BoxFit.fill,
               ),
             ),
           ),
           Positioned(
-            top: 30,
+            top: 25,
             right: 10,
             child: Material(
               color: Colors.transparent,
@@ -143,11 +151,11 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
                   borderRadius: BorderRadius.circular(8),
                   onTap: () => showCustomModal(context),
                   child: Padding(
-                    padding: const EdgeInsets.all(6.0),
+                    padding: const EdgeInsets.all(5.0),
                     child: Icon(
                       Icons.question_mark,
                       color: Colors.black,
-                      size: 24,
+                      size: 22,
                     ),
                   ),
                 ),
