@@ -5,19 +5,9 @@
 
 ## Tech Stack
 
-<div align="center">
-  <table>
-    <tr>
-      <td align="center">
-        <img src="https://raw.githubusercontent.com/A4GOD-AMHG/Utils-for-repos/refs/heads/main/icons/dart/dart-original.svg" width="100" alt="dart"/><br>
-        <b>Dart</b>
-      </td>
-      <td align="center">
-        <img src="https://raw.githubusercontent.com/A4GOD-AMHG/Utils-for-repos/refs/heads/main/icons/flutter/flutter-original.svg" width="100" alt="flutter"/><br>
-        <b>Flutter</b>
-      </td>
-    </tr>
-  </table>
+<div style="display: flex; align-items: center;">
+  <img src="https://raw.githubusercontent.com/A4GOD-AMHG/Utils-for-repos/refs/heads/main/icons/dart/dart-original.svg" alt="dart" width="65" height="65" />
+  <img src="https://raw.githubusercontent.com/A4GOD-AMHG/Utils-for-repos/refs/heads/main/icons/flutter/flutter-original.svg" alt="flutter" width="65" height="65" />
 </div>
 
 ## Features
