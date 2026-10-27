@@ -1,5 +1,5 @@
 import 'package:cienfuegos_folklore/widgets/audio_player.dart';
-import 'package:cienfuegos_folklore/widgets/info_modal.dart';
+import 'package:cienfuegos_folklore/widgets/info_button.dart';
 import 'package:flutter/material.dart';
 
 class LegendDetailScreen extends StatefulWidget {
@@ -34,8 +34,8 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
   }
 
   void _calculatePosition() {
-    final RenderBox renderBox =
-        _headerWidgetKey.currentContext?.findRenderObject() as RenderBox;
+    final renderBox = _headerWidgetKey.currentContext?.findRenderObject();
+    if (!mounted || renderBox is! RenderBox || !renderBox.hasSize) return;
     final position = renderBox.localToGlobal(Offset.zero);
     final size = renderBox.size;
 
@@ -141,26 +141,7 @@ class _LegendDetailScreenState extends State<LegendDetailScreen> {
           Positioned(
             top: 25,
             right: 10,
-            child: Material(
-              color: Colors.transparent,
-              child: Ink(
-                decoration: BoxDecoration(
-                    color: Color(0xFFDAB589),
-                    borderRadius: BorderRadius.circular(8)),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(8),
-                  onTap: () => showCustomModal(context),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Icon(
-                      Icons.question_mark,
-                      color: Colors.black,
-                      size: 22,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            child: const InfoButton(),
           ),
           Positioned(
             top: _navigationTopDistance,

@@ -1,19 +1,20 @@
-import 'dart:async';
-import 'dart:convert';
+import 'package:cienfuegos_folklore/models/legend.dart';
 import 'package:cienfuegos_folklore/screens/legend_detail_screen.dart';
-import 'package:cienfuegos_folklore/widgets/info_modal.dart';
+import 'package:cienfuegos_folklore/services/legend_repository.dart';
+import 'package:cienfuegos_folklore/widgets/info_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  final LegendRepository? repository;
+
+  const HomeScreen({super.key, this.repository});
 
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  List<dynamic> legends = [];
+  List<Legend> legends = [];
 
   @override
   void initState() {
@@ -22,12 +23,14 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   Future<void> loadLegends() async {
-    final String response =
-        await rootBundle.loadString('assets/data/legends.json');
-    final data = json.decode(response);
-    setState(() {
-      legends = data["legends"];
-    });
+    try {
+      final loaded =
+          await (widget.repository ?? LegendRepository()).loadLegends();
+      if (!mounted) return;
+      setState(() => legends = loaded);
+    } catch (e, st) {
+      debugPrint('Failed to load legends: $e\n$st');
+    }
   }
 
   @override
@@ -81,10 +84,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               pageBuilder:
                                   (context, animation, secondaryAnimation) =>
                                       LegendDetailScreen(
-                                legendTitle: legend['title'],
-                                legendContent: legend['content'],
-                                icon: legend['icon'],
-                                audio: legend['audio'],
+                                legendTitle: legend.title,
+                                legendContent: legend.content,
+                                icon: legend.icon,
+                                audio: legend.audio,
                               ),
                             ),
                           );
@@ -97,9 +100,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 right: 5,
                               ),
                               child: Hero(
-                                tag: legend['icon'],
+                                tag: legend.icon,
                                 child: Image.asset(
-                                  legend['icon2'],
+                                  legend.icon2,
                                   fit: BoxFit.contain,
                                 ),
                               ),
@@ -116,26 +119,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Positioned(
             top: 25,
             right: 10,
-            child: Material(
-              color: Colors.transparent,
-              child: Ink(
-                decoration: BoxDecoration(
-                    color: Color(0xFFDAB589),
-                    borderRadius: BorderRadius.circular(8)),
-                child: InkWell(
-                  borderRadius: BorderRadius.circular(8),
-                  onTap: () => showCustomModal(context),
-                  child: Padding(
-                    padding: const EdgeInsets.all(5.0),
-                    child: Icon(
-                      Icons.question_mark,
-                      color: Colors.black,
-                      size: 22,
-                    ),
-                  ),
-                ),
-              ),
-            ),
+            child: const InfoButton(),
           ),
         ],
       ),
