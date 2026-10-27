@@ -1,8 +1,6 @@
 import 'dart:async';
-import 'dart:io';
 import 'package:cienfuegos_folklore/screens/home_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 
@@ -14,22 +12,6 @@ void main() {
     FlutterNativeSplash.remove();
     runApp(MyApp());
   });
-}
-
-void setWindowSize(double width, double height) {
-  if (Platform.isWindows || Platform.isLinux) {
-    final channel = const MethodChannel('flutter/window');
-    channel.invokeMethod('setWindowSize', {'width': width, 'height': height});
-    channel.invokeMethod('setWindowResizable', {'resizable': false});
-  }
-}
-
-class NoGlowScrollBehavior extends ScrollBehavior {
-  @override
-  Widget buildOverscrollIndicator(
-      BuildContext context, Widget child, ScrollableDetails details) {
-    return child;
-  }
 }
 
 class MyApp extends StatelessWidget {
