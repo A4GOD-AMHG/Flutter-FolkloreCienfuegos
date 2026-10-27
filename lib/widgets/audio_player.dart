@@ -12,7 +12,7 @@ class AudioPlayerWidget extends StatefulWidget {
   });
 
   @override
-  _AudioPlayerWidgetState createState() => _AudioPlayerWidgetState();
+  State<AudioPlayerWidget> createState() => _AudioPlayerWidgetState();
 }
 
 class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
@@ -46,6 +46,11 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
       }
     });
 
+    // Rebuild so the play/pause icon follows the real player state.
+    _audioPlayer.onPlayerStateChanged.listen((_) {
+      if (mounted) setState(() {});
+    });
+
     _audioPlayer.onPlayerComplete.listen((event) {
       if (mounted) {
         setState(() {
@@ -58,8 +63,13 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   }
 
   Future<void> _loadAudio() async {
-    await _audioPlayer.setSource(AssetSource(widget.audioPath));
-    final audioDuration = await _audioPlayer.getDuration();
+    Duration? audioDuration;
+    try {
+      await _audioPlayer.setSource(AssetSource(widget.audioPath));
+      audioDuration = await _audioPlayer.getDuration();
+    } catch (e) {
+      debugPrint('Failed to load audio ${widget.audioPath}: $e');
+    }
     if (mounted) {
       setState(() {
         duration = audioDuration ?? Duration.zero;
@@ -68,10 +78,14 @@ class _AudioPlayerWidgetState extends State<AudioPlayerWidget> {
   }
 
   void handlePlayPause() {
-    if (_audioPlayer.state == PlayerState.playing) {
-      _audioPlayer.pause();
-    } else {
-      _audioPlayer.play(AssetSource(widget.audioPath));
+    switch (_audioPlayer.state) {
+      case PlayerState.playing:
+        _audioPlayer.pause();
+      case PlayerState.paused:
+        // Resume keeps the current position; play() would reload the source.
+        _audioPlayer.resume();
+      default:
+        _audioPlayer.play(AssetSource(widget.audioPath));
     }
   }
 
