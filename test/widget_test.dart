@@ -1,30 +1,30 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
-import 'package:flutter/material.dart';
+import 'package:cienfuegos_folklore/models/legend.dart';
+import 'package:cienfuegos_folklore/services/legend_repository.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:cienfuegos_folklore/main.dart';
-
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  TestWidgetsFlutterBinding.ensureInitialized();
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+  test('legends.json parses into Legend models', () async {
+    final legends = await LegendRepository().loadLegends();
+    expect(legends, isNotEmpty);
+    for (final legend in legends) {
+      expect(legend.title, isNotEmpty);
+      expect(legend.audio.startsWith('assets/'), isFalse,
+          reason: 'AssetSource already prefixes assets/');
+    }
+  });
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
+  test('Legend.fromJson maps every field', () {
+    final legend = Legend.fromJson({
+      'title': 't',
+      'content': 'c',
+      'icon': 'i',
+      'icon2': 'i2',
+      'audio': 'audio/a.mp3',
+    });
+    expect(
+        [legend.title, legend.content, legend.icon, legend.icon2, legend.audio],
+        ['t', 'c', 'i', 'i2', 'audio/a.mp3']);
   });
 }
